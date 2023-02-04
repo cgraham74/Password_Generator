@@ -26,3 +26,13 @@ function displayPassword(){
     firstPass.textContent = generatePassword();
     secondPass.textContent = generatePassword();
 }
+
+function copyFirstPassword(){
+    navigator.clipboard.writeText(firstPass.textContent);
+    console.log("first pw: " + navigator.clipboard.writeText(firstPass.textContent));
+
+}
+function copySecondPassword(){
+    navigator.clipboard.writeText(secondPass.textContent);
+    console.log("second: "+ navigator.clipboard.writeText(secondPass.textContent))
+}
