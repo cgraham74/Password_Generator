@@ -1,0 +1,16 @@
+{
+  "name": "passwordgenerator",
+  "version": "1.0.0",
+  "description": "Randomly generates 2 unique passwords",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "password",
+    "generator",
+    "password generator"
+  ],
+  "author": "Christina Graham",
+  "license": "ISC"
+}
