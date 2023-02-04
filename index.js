@@ -6,18 +6,39 @@ const characters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O",
 
 const firstPass = document.getElementById("first-pass");
 const secondPass = document.getElementById("second-pass");
+const passLength = document.getElementById("length");
+let hasSymbols = document.getElementById("symbols");
+let hasNumbers = document.getElementById("numbers");
 
 function generatePassword(){
-   let pass = ""; 
-    for (let i = 0; i < 15; i++){
-    pass += generateRandomNum();
+    let password = ""; 
+    let passWordLength = "";
+   if(hasNumbers.checked === true){
+    console.log("numbers is checked");
+   } 
+   if (hasSymbols.checked === true){
+    console.log("Symbols is checked");
+   }
+    if (passLength.value > 0) {
+        passWordLength = passLength.value;
+    } else {
+        passWordLength = 15;
     }
-    return pass;
+    for (let i = 0; i < passWordLength; i++){
+    password += generateRandomNum();
+    }
+
+    return password;
 }
 
 function generateRandomNum(){
-    let randomNum = characters[Math.floor(Math.random() * characters.length)];
-    return randomNum;
+    //if want symbols
+
+    //if want numbers
+
+    //If want both
+    let randomChar = characters[Math.floor(Math.random() * characters.length)];
+    return randomChar;
 }
 
 function displayPassword(){
@@ -28,11 +49,13 @@ function displayPassword(){
 }
 
 function copyFirstPassword(){
+    console.log("First Length:" + firstPass.textContent.length);
+    console.log("First pw:" + firstPass.textContent);
     navigator.clipboard.writeText(firstPass.textContent);
-    console.log("first pw: " + navigator.clipboard.writeText(firstPass.textContent));
-
 }
+
 function copySecondPassword(){
+    console.log("Second Length: " + secondPass.textContent.length);
+    console.log("Second pw: " + secondPass.textContent);
     navigator.clipboard.writeText(secondPass.textContent);
-    console.log("second: "+ navigator.clipboard.writeText(secondPass.textContent))
 }
