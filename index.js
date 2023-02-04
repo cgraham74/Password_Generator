@@ -10,52 +10,48 @@ const passLength = document.getElementById("length");
 let hasSymbols = document.getElementById("symbols");
 let hasNumbers = document.getElementById("numbers");
 
-function generatePassword(){
-    let password = ""; 
-    let passWordLength = "";
-   if(hasNumbers.checked === true){
-    console.log("numbers is checked");
-   } 
-   if (hasSymbols.checked === true){
-    console.log("Symbols is checked");
-   }
-    if (passLength.value > 0) {
-        passWordLength = passLength.value;
-    } else {
-        passWordLength = 15;
-    }
-    for (let i = 0; i < passWordLength; i++){
-    password += generateRandomNum();
-    }
+function generatePassword() {
+  let regPass = characters;
+  let password = "";
+  let passWordLength = "";
 
-    return password;
+  if (!hasNumbers.checked) {
+    regPass = regPass.filter((char) => !/[0-9]/.test(char));
+  }
+  if (!hasSymbols.checked) {
+    regPass = regPass.filter((char) => !/([^\w ]|_)/g.test(char));
+ 
+  }
+
+  if (passLength.value > 0) {
+    passWordLength = passLength.value;
+  } else {
+    passWordLength = 15;
+  }
+
+  for (let i = 0; i < passWordLength; i++) {
+    password += generateRandomNum(regPass);
+  }
+  return password;
 }
 
-function generateRandomNum(){
-    //if want symbols
-
-    //if want numbers
-
-    //If want both
-    let randomChar = characters[Math.floor(Math.random() * characters.length)];
-    return randomChar;
+function generateRandomNum(regPass) {
+  let randomChar = regPass[Math.floor(Math.random() * regPass.length)];
+  return randomChar;
 }
 
-function displayPassword(){
-    firstPass.textContent = "";
-    secondPass.textContent = "";
-    firstPass.textContent = generatePassword();
-    secondPass.textContent = generatePassword();
+function displayPassword() {
+  firstPass.textContent = "";
+  secondPass.textContent = "";
+  firstPass.textContent = generatePassword();
+  secondPass.textContent = generatePassword();
 }
 
-function copyFirstPassword(){
-    console.log("First Length:" + firstPass.textContent.length);
-    console.log("First pw:" + firstPass.textContent);
-    navigator.clipboard.writeText(firstPass.textContent);
+function copyFirstPassword() {
+  navigator.clipboard.writeText(firstPass.textContent);
 }
 
-function copySecondPassword(){
-    console.log("Second Length: " + secondPass.textContent.length);
-    console.log("Second pw: " + secondPass.textContent);
-    navigator.clipboard.writeText(secondPass.textContent);
+function copySecondPassword() {
+  navigator.clipboard.writeText(secondPass.textContent);
 }
+
