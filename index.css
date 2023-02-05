@@ -77,9 +77,6 @@ input#length{
     border-width: 0px 0px 1px 0px;
 }
 
-input[type=checkbox] {
+input[type=checkbox], input[type=number] {
     accent-color: #10B981;
-}
-input[type=number] {
-    accent-color: #10B981;   
 }
