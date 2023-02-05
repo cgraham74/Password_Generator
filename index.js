@@ -18,9 +18,9 @@ function generatePassword() {
   if (!hasNumbers.checked) {
     regPass = regPass.filter((char) => !/[0-9]/.test(char));
   }
+
   if (!hasSymbols.checked) {
     regPass = regPass.filter((char) => !/([^\w ]|_)/g.test(char));
- 
   }
 
   if (passLength.value > 0) {
